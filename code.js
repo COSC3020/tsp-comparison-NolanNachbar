@@ -5,16 +5,16 @@ function tsp_ls(distance_matrix) {
   let minCost = calcCost(minRoute, distance_matrix);
   let improving = true;
   while (improving) {
-    let routePath = [...minRoute]; // Get a deep copy of min route
-    let r = Math.floor(Math.random() * (n - 1)) + 1; // Random Number in the range 1 to n - 1
-    let l = Math.floor(Math.random() * (n - r - 1)) + (r + 1); // Random number in the range r + 1 to n
+    let routePath = [...minRoute];
+    let r = Math.floor(Math.random() * (n - 1)) + 1;
+    let l = Math.floor(Math.random() * (n - r - 1)) + (r + 1);
     swap(routePath, r, l);
     let newCost = calcCost(routePath, distance_matrix);
     if (newCost < minCost) {
       minCost = newCost;
       minRoute = routePath;
       improving = true;
-    } else improving = false; // no improvement
+    } else improving = false;
   }
   return minCost;
 }
